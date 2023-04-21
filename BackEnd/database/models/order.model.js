@@ -3,12 +3,10 @@ const mongoose = require('mongoose')
 const orderSchema =mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
         ref:'user'
     },
     restaurantId:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
         ref:'restaurant'
     },
     userName:{
@@ -25,10 +23,10 @@ const orderSchema =mongoose.Schema({
         required:true,
         ref:'product'
     },
-    itemsNumber:{
-        type:Number,
-        required:true
-    }
+    // itemsNumber:{
+    //     type:Number,
+    //     required:true
+    // }
 },{
     timestamps:true
 })

@@ -1,0 +1,36 @@
+<div class="container" >
+  <h2 style="text-align: center ;margin:2rem ;">Restaurant Data</h2>
+<div class="card mb-6" style="max-width: 100%; margin:2rem ;">
+    <div class="row g-0">
+      <div class="col-md-4" style="max-width: 50%; height:min-content;">
+        <img [src]="restaurantData.image" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{restaurantData.title}}</h5>
+          <p class="card-text">{{restaurantData.details}}</p>
+          <a class="btn-update" *ngIf="owner" routerLink="/createRestaurant" >Update info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="owner" *ngIf="owner">
+    <h2 style="text-align: center ;margin:2rem ;">Products</h2>
+      <button class="btn" routerLink="/addProduct">Add Product</button>
+    </div>
+    <h2 style="text-align: center ;margin:2rem ;" *ngIf="!owner">Products</h2>
+    <section class="popular" id="popular"*ngIf="products.length >0  ; else noProducts" >
+        <div class="box-container" >
+          <div *ngFor="let product of products" >
+            <app-product-cart [data] ="product" [owner]="owner"></app-product-cart>
+          </div>
+        </div>
+    </section>
+    <ng-template #noProducts>
+    <section class="popular" id="popular" >
+      <h5 style="text-align: center;"> No Products Found</h5>
+    </section>
+  </ng-template>
+  </div>
+</div>

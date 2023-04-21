@@ -1,12 +1,12 @@
 const controller = require('../app/controller/user.controller')
 const router = require('express').Router();
-const upload = require('../app/middleware/uploadImage')
+const {uploadUser} = require('../app/middleware/uploadImage')
 const {auth} = require('../app/middleware/auth.middleware')
 // post method
 router.post('/register',controller.register )
 router.post('/login',controller.logInUser )
 router.post('/logout',auth,controller.logOutUser )
-// router.post('/uploadImage',auth,upload('user'),controller.uploadImage )
+router.post('/uploadImage',auth,uploadUser.single("image"),controller.uploadImage )
 
 // get method
 router.get('/',auth,controller.userData )

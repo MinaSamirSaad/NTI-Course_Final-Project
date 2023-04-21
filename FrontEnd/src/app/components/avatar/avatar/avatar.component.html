@@ -1,0 +1,8 @@
+<img [src]="userData.image" alt="Avatar" class="avatar btn  dropdown-toggle mx-5 "  data-bs-toggle="dropdown" aria-expanded="false"  >
+<ul class="dropdown-menu dropdown-menu-end">
+  <li class="dropdown-item" routerLink="/profile"> <a >Profile</a></li>
+  <li class="dropdown-item"  routerLink="/orders"> <a >My Orders</a></li>
+  <li class="dropdown-item" *ngIf="userData?.restaurant" routerLink="/myRestaurant"> <a >MyRestaurant</a></li>
+  <li class="dropdown-item hidden" [routerLink]="['restaurants']" ><a>Restaurants</a></li>
+  <li class="dropdown-item hidden"  [routerLink]="['products']" ><a>Products</a></li>
+</ul>

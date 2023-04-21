@@ -9,7 +9,6 @@ const userSchema = mongoose.Schema({
         required:true,
         trim:true,
         minLength: 3,
-        maxLength: 20,
         lowercase:true,
 
     },
@@ -42,28 +41,24 @@ const userSchema = mongoose.Schema({
         trim:true,
         enum:['Male','Female']
     },
-    addresses:[{
-        addrName:{
+    address:{
+        city:{
             type:String,
             trim:true,
-            minLength: 5,
             maxLength: 20,
         lowercase:true,
-
         },
-        addrDetails:{
+        country:{
             type:String,
             trim:true,
-            minLength: 5,
             maxLength: 50,
         lowercase:true,
 
         }
     }
-    ],
+    ,
     phone:{
         type:String,
-        required:true,
         trim:true,
         validate(value){
             if(!validator.isMobilePhone(value)){
@@ -88,7 +83,8 @@ const userSchema = mongoose.Schema({
     }
     ],
     image:{
-        type:String
+        type:String,
+        default:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/1200px-Unknown_person.jpg'
     },
     userType:{
         type:String,

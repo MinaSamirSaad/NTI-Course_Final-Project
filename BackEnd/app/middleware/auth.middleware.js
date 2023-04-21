@@ -4,7 +4,7 @@ const { resData } = require('../helper');
 const auth = async(req,res,next)=>{
    try{
     if(req.header("Authorization")){
-    const token = req.header("Authorization").replace("baerer ", "");
+    const token = req.header("Authorization").replace("Bearer ", "");
     const decoded = jwt.verify(token,process.env.JWT_SECRET);
     const userData = await userModel.findOne({
         _id:decoded._id,

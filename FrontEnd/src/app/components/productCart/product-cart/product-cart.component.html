@@ -1,0 +1,14 @@
+<div class="alert alert-success" role="alert" *ngIf="added">
+    success!! the product was added to your orders
+  </div>
+<div class="box">
+    <span class="price"> ${{data.price}} </span>
+    <img [src]="data.image" alt="">
+    <h3>{{data.title}}</h3>
+    <p class="box-details">{{data.content}}</p>
+    <a class="btn" (click)="handleSubmit(data._id)" *ngIf="!owner">order now</a>
+    <div *ngIf="owner" class="owner">
+    <a class="btn" (click)="handleDelete(data._id)" >Delete</a>
+    <a class="btn-update" routerLink="/addProduct/{{data._id}}" >Edit</a>
+  </div>
+</div>

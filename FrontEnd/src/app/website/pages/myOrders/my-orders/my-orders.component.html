@@ -1,0 +1,23 @@
+<div class="container"  >
+  <div class="alert alert-danger" *ngIf="orders.length==0">
+    no orders found
+  </div>
+  <div class="center">
+  <a class="btn" routerLink="/products" ><-- Order One Now</a>
+</div>
+    <div class="card mb-3" style="max-width: 100%; margin:2rem ;" *ngFor="let order of orders">
+        <div class="row g-0">
+          <div class="col-md-4" style="max-width: 50%;">
+            <img [src]="order.image" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{order.title}}</h5>
+              <p class="card-text">{{order.content}}</p>
+              <span class="price">price: {{order.price}}$</span>
+              <button class="btn-delete" (click)="handleDelete(order.orderId)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

@@ -3,12 +3,10 @@ const mongoose = require('mongoose')
 const productSchema =mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
         ref:'user'
     },
     restaurantId:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
         ref:'restaurant'
     },
     ownerName:{
@@ -16,19 +14,17 @@ const productSchema =mongoose.Schema({
         required:true,
         trim:true,
         minLength: 3,
-        maxLength: 20,
+        // maxLength: 20,
         lowercase:true,
 
     },
-    images:[
-        {
-            image:{
+image:{
                 type:String,
                 // required:true,
-                trim:true
-            }
-        }
-    ],
+                trim:true,
+                default: 'https://www.teenaagnel.com/wp-content/uploads/2019/12/food-photography-in-dubai.jpg'
+
+            },
     title:{
         type:String,
         lowercase:true,

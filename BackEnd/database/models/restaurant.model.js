@@ -11,14 +11,16 @@ const restaurantSchema =mongoose.Schema({
         required:true,
         trim:true,
         minLength: 3,
-        maxLength: 20,
+        // maxLength: 20,
         lowercase:true,
 
     },
     image:{
         type:String,
-        // required:true,
-        trim:true
+        required:true,
+        trim:true,
+        default: 'https://www.teenaagnel.com/wp-content/uploads/2019/12/food-photography-in-dubai.jpg'
+
     },
     title:{
         type:String,

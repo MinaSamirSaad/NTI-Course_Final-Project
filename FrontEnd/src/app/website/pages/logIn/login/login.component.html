@@ -1,0 +1,29 @@
+<div class="form-conteainer ">
+    <div class="alert alert-danger" *ngIf="msgError">
+        {{msgError}}
+    </div>
+    <form #loginform="ngForm" (ngSubmit)="handleSubmit(loginform)"  >
+        
+        <div class="row gy-4 mt-4">
+<div class="col-12 col-6">
+    <input type="email" placeholder="enter Email" class="form-control "
+     [(ngModel)]="userData.email" name="email" #email="ngModel" required email minlength="5">
+     <div class="alert alert-danger" *ngIf="loginform.submitted && email.invalid">
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+        <div *ngIf="email.errors?.['email']">Invalid Email</div>
+        <div *ngIf="email.errors?.['minlength']">min length = 5</div>
+     </div>
+</div>
+
+<div class="col-12 col-6">
+    <input type="password" placeholder="enter password" class="form-control " 
+    [(ngModel)]="userData.password" name="password" #password="ngModel"
+     required (input)="msgError = null" >
+    <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || loginform.submitted )">
+        <div *ngIf="password.errors?.['required']">password is required</div>
+    </div>
+</div>
+<button class="btn ">Login</button>
+</div>
+</form>
+</div>

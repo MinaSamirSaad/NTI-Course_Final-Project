@@ -4,10 +4,10 @@ class User {
     static register=async(req,res)=>{
         try{
             if(req.body.userType =="Admen") throw new Error("you can not be Admen")
-            const userData = await new userModel(req.body)
-            await userData.generateToken()
-            // await userData.save();
-            helperFunc.resData(res,200,true,userData,"success adding")
+            const user = await new userModel(req.body)
+            await user.save();
+            const token =await user.generateToken()
+            helperFunc.resData(res,200,true,{user,token},"success adding")
 
         }
         catch(e){
@@ -28,8 +28,8 @@ class User {
     static logInUser = async(req,res)=>{
         try{
             const user = await userModel.loginMe(req.body.email,req.body.password);
-            await user.generateToken()
-            helperFunc.resData(res,200,true,user,"success login")
+            const token =await user.generateToken()
+            helperFunc.resData(res,200,true,{user,token},"success login")
 
         }
         catch(e){
@@ -66,7 +66,9 @@ class User {
         if(req.body.userType =="Admen") throw new Error("you can not be Admen")
         try{
             for (let key in req.body) {
+                if(key!="password"){
                 req.user[key] = req.body[key]
+                }
             }
             await req.user.save()
             helperFunc.resData(res,200,true,req.user,"success update")
@@ -113,16 +115,17 @@ class User {
     static uploadImage = async(req,res)=>{
         try{
             const fs = require('fs')
+            console.log(req.file)
             const ext = req.file.originalname.split(".").pop()
+            const folderName = req.file.path.split("/")[1]
             const newName = req.file.path + "." + ext;
             fs.renameSync(req.file.path,newName)
-            req.user.image =`${process.env.ServerLink}${req.file.filename}.${ext}`
+            req.user.image =`${process.env.ServerLink}${folderName}/${req.file.filename}.${ext}`
            await req.user.save()
-            helperFunc.resData(res,200,true,req.user,"success logout")
-
+            helperFunc.resData(res,200,true,req.user,"success upload")
         }
         catch(e){
-            helperFunc.resData(res,500,false,e.message,"failed logout")
+            helperFunc.resData(res,500,false,e.message,"failed upload")
         }
     }
 }

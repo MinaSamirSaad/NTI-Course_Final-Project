@@ -4,9 +4,16 @@ class Product{
     static add =async(req,res)=>{
         try{
             if(req.userType != "Owner") throw new Error("you are not restaurant owner")
+            const fs = require('fs')
+            console.log(req.file)
+            const ext = req.file.originalname.split(".").pop()
+            const folderName = req.file.path.split("/")[1]
+            const newName = req.file.path + "." + ext;
+            fs.renameSync(req.file.path,newName)
         const productData = await new productModel({
             userId:req.user._id,
             ownerName:req.user.userName,
+            image:`${process.env.ServerLink}${folderName}/${req.file.filename}.${ext}`,
             ...req.body})
         await req.user.products.push(productData._id)
         await productData.save();
@@ -39,7 +46,16 @@ class Product{
         try{
             if(req.userType != "Owner" ) throw new Error("you are not restaurant owner")
         const product = await productModel.findById(req.params.id)
+        const fs = require('fs')
+        console.log(req.file)
+        if(req.file){
+        const ext = req.file.originalname.split(".").pop()
+        const folderName = req.file.path.split("/")[1]
+        const newName = req.file.path + "." + ext;
+        fs.renameSync(req.file.path,newName)
         if(JSON.stringify(product.userId) != JSON.stringify(req.user._id)) throw new Error("you are not product Owner")
+        product.image=`${process.env.ServerLink}${folderName}/${req.file.filename}.${ext}`;
+        }
         for (let key in req.body) {
             product[key] = req.body[key]
         }

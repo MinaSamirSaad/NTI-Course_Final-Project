@@ -8,8 +8,7 @@ class Order{
         const orderData = await new orderModel({
             userId:req.user._id,
             userName:req.user.userName,
-            productId:req.params.id,...req.body})
-            console.log(orderData)
+            productId:req.params.id})
             req.user.orders.push(orderData._id)
         await orderData.save();
         await req.user.save()
@@ -49,7 +48,7 @@ class Order{
     static delete =async(req,res)=>{
         try{
         const order = await orderModel.findById(req.params.id)
-        if(req.userType != "Visitor" || JSON.stringify(order.userId)!=JSON.stringify(req.user._id) ) throw new Error("you should register first")
+        // if(req.userType != "Visitor"  ) throw new Error("you should register first")
         req.user.orders =req.user.orders.filter((or)=>{
             return JSON.stringify(or._id) !=JSON.stringify(order._id)
         })

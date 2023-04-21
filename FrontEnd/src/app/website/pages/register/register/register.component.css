@@ -1,0 +1,26 @@
+
+.form-conteainer{
+    width: 60vw;
+    font-size: 1.6rem;
+    margin: 10vh auto;
+}
+.form-conteainer .form-control {
+    height: 2rem;
+    padding: 3rem;
+    font-size: 1.6rem;
+    color: black;
+}
+.form-conteainer button{
+    font-size: 1.8rem;
+    font-weight: 400;
+    padding: 1.1rem 0;
+    max-width: 30%;
+    margin: 1rem auto;
+    border-radius: 7px;
+    color: white;
+    background-color: var(--red);
+}
+.form-conteainer button:hover{
+    opacity: .8;
+    box-shadow: 1px 1px 2px gray;
+}

@@ -1,0 +1,7 @@
+<section class="popular" id="popular" >
+    <div class="box-container" >
+    <div *ngFor="let restaurant of restaurants">
+<app-restaurant-cart [data]="restaurant"></app-restaurant-cart>
+</div>
+    </div>
+</section>

@@ -1,0 +1,55 @@
+<div class="container">
+<div class="card" style="width: 18rem;">
+    <img [src]="userData.image" class="card-img-top" alt="...">
+    <div class="card-body">
+    <a class="btn ">
+        <label for="inputTag">
+        change Image
+        <input id="inputTag" type="file"  (change)="handleChange($event)"/>
+      </label></a>
+    </div >
+
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="added">
+    your information was updated
+  </div>
+  <div class="form-conteainer ">
+  <form #loginform="ngForm" (ngSubmit)="handleSubmit(loginform)"  >
+    
+    <div class="row gy-4 mt-4">
+        <div class="col-12 col-6">
+            <input type="text" placeholder="enter Name" class="form-control "
+             [(ngModel)]="userData.userName" name="userName"  #name = "ngModel" required minlength="5">
+             <div class="alert alert-danger" *ngIf="loginform.submitted && name.invalid">
+                <div *ngIf="email.errors?.['required']">Name is required</div>
+                <div *ngIf="email.errors?.['minlength']">min length = 5</div>
+             </div>
+        </div>
+        <div class="col-12 col-6">
+            <input type="number" placeholder="enter your Age" class="form-control "
+             [(ngModel)]="userData.age" name="age"  #age = "ngModel" required >
+             <div class="alert alert-danger" *ngIf="loginform.submitted && name.invalid">
+                <div *ngIf="email.errors?.['required']">Age is required</div>
+             </div>
+        </div>
+        <div class="col-12 col-6">
+            <input type="email" placeholder="enter Email" class="form-control "
+             [(ngModel)]="userData.email" name="email" #email="ngModel" required email minlength="5">
+             <div class="alert alert-danger" *ngIf="loginform.submitted && email.invalid">
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">Invalid Email</div>
+                <div *ngIf="email.errors?.['minlength']">min length = 5</div>
+             </div>
+        </div>
+          <div ngModelGroup="address" >
+            <div class="col-12 col-md-4 w-100" >
+                <input type="text" placeholder="city" name="city" [(ngModel)]="userData.address.city" class="form-control  w-100" >
+            </div>
+            <div class="col-12 col-md-4 w-100 mt-4">
+                <input type="text" placeholder="country" name="country"  [(ngModel)]="userData.address.city" class="form-control w-100 " >
+            </div>
+        </div>
+<button class="btn " >Update </button>
+</div>
+  </form>
+</div>
