@@ -12,8 +12,9 @@ export class AppComponent {
   }
   constructor(private user:UserDataService){
     let token = localStorage.getItem('token')
+    let userType = localStorage.getItem('user')
     console.log(token)
-    if(token){
+    if(token && userType){
       user.isLogin = true
     }
     user.user().subscribe((res)=>{

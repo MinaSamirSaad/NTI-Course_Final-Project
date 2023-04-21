@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserDataService } from 'src/app/services/user/userData/user-data.service';
+import { AdmenService } from '../../../services/Admen/admen.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,8 @@ import { UserDataService } from 'src/app/services/user/userData/user-data.servic
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(public user : UserDataService){
-   
-    console.log(user.isLogin)
+  constructor(public user : UserDataService,public admen:AdmenService){
+
   }
 
   handleClick(){

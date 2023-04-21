@@ -8,13 +8,14 @@ import { ProductsService } from 'src/app/services/user/products/products.service
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
+  message=''
   allProducts=[]
-  constructor(private products:ProductsService,private orders:OrdersService){
+  constructor(private products:ProductsService){
     products.allProducts().subscribe((res)=>{
       this.allProducts= res.data
     },(e)=>{
       console.log(e);
-      
+      this.message=e.data.message
     })
   }
 

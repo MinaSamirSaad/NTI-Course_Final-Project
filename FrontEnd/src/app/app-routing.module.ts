@@ -11,8 +11,12 @@ import { MyProfileComponent } from './website/pages/myProfile/my-profile/my-prof
 import { MyOrdersComponent } from './website/pages/myOrders/my-orders/my-orders.component';
 import { LoginComponent } from './website/pages/logIn/login/login.component';
 import { CreateProductComponent } from './website/pages/createProduct/create-product/create-product.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginAdmenComponent } from './Dashboard/login-admen/login-admen.component';
+import { AdmenHomeComponent } from './Dashboard/admen-home/admen-home.component';
 
 const routes: Routes = [
+  {path:'' , children:[
   {path:'' , component:HomeComponent},
   {path:'profile' , component:MyProfileComponent},
   {path:'register' , component:RegisterComponent},
@@ -30,9 +34,12 @@ const routes: Routes = [
   {path:'restaurants' , children:[
     {path:'' , component : RestaurantsComponent },
     {path:":singleRestaurantId" , component :SingleRestaurantComponent  }
-    // {path:'addPost' , component : AddPostComponent },
   ]}
-  
+]},{path:'ADMEN' , children:[
+  {path:'' , component:LoginAdmenComponent},
+  {path:'Home' , component:AdmenHomeComponent},
+]},
+{ path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({

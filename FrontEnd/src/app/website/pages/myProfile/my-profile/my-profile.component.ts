@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/services/user/userData/user-data.service';
-import { ToastrService } from 'ngx-toastr';
 import { UserData } from 'src/app/interfaces/user-data';
 
 @Component({
@@ -24,8 +23,9 @@ export class MyProfileComponent {
     userType:'',
     image:{}||""
   }
+  message:string | undefined
   added=false
-  constructor(private user:UserDataService,private router:Router, private toastr: ToastrService) {
+  constructor(private user:UserDataService,private router:Router) {
     user.user().subscribe((res)=>{
       this.userData=res.data
       console.log(res.data)
@@ -50,7 +50,7 @@ export class MyProfileComponent {
         this.added=true
       },(e)=>{
         console.log(e);
-        
+        this.message=e.data.message
       })
     }
   }

@@ -7,10 +7,13 @@ import { RestaurantsService } from 'src/app/services/user/restaurants/restaurant
   styleUrls: ['./restaurants.component.css']
 })
 export class RestaurantsComponent {
+  message=''
   restaurants=[]
 constructor(private restaurant:RestaurantsService){
   restaurant.showAll().subscribe((res)=>{
     this.restaurants= res.data
+  },e=>{
+    this.message=e.data.message
   })
 }
 }

@@ -50,8 +50,9 @@ if(form.valid){
         localStorage.setItem('user', JSON.stringify(user))
         this.router.navigateByUrl('/restaurants')
       },(e)=>{
-        console.log(e.error);
-        this.msgError=e.error.message
+        console.log(e);
+        
+        this.msgError='please add the photo '
       })
     
   }
@@ -61,6 +62,8 @@ if(form.valid){
       if(form.valid){
       this.router.navigateByUrl('/restaurants')
       }
+    },(e)=>{
+      this.msgError=e.data.message
     })
   }
 }

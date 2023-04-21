@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="circle-tile ">
+          <a ><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+          <div class="circle-tile-content dark-blue">
+            <div class="circle-tile-description text-faded"> Users</div>
+            <div class="circle-tile-number text-faded ">{{allUsers.length}}</div>
+            <a class="circle-tile-footer" (click)="handleUsers()" >More Info<i class="fa fa-chevron-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+       
+      <div class="col">
+        <div class="circle-tile ">
+          <a ><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+          <div class="circle-tile-content red">
+            <div class="circle-tile-description text-faded"> Products</div>
+            <div class="circle-tile-number text-faded ">{{allProducts.length}}</div>
+            <a class="circle-tile-footer" (click)="handleProducts()">More Info<i class="fa fa-chevron-circle-right"></i></a>
+          </div>
+        </div>
+      </div> 
+      <div class="col">
+        <div class="circle-tile ">
+          <a ><div class="circle-tile-heading orange"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+          <div class="circle-tile-content orange">
+            <div class="circle-tile-description text-faded"> Orders</div>
+            <div class="circle-tile-number text-faded ">{{allOrders.length}}</div>
+            <a class="circle-tile-footer"  (click)="handleOrders()">More Info<i class="fa fa-chevron-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="circle-tile ">
+          <a ><div class="circle-tile-heading green"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+          <div class="circle-tile-content green">
+            <div class="circle-tile-description text-faded"> Restaurants</div>
+            <div class="circle-tile-number text-faded ">{{allRestaurants.length}}</div>
+            <a class="circle-tile-footer" (click)="handleRestaurants()">More Info<i class="fa fa-chevron-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>  
+  <div class="container">
+  <table class="table table-bordered" *ngIf="active">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th *ngIf="type=='user' || type=='order'">name</th>
+            <th *ngIf="type=='user'">email</th>
+            <th *ngIf="type=='user'">gender</th>
+            <th *ngIf="type=='user'">age</th>
+            <th *ngIf="type=='user'">user type</th>
+            <th *ngIf="type=='order'">product id</th> 
+            <th *ngIf="type=='restaurant' ||type== 'product'">owner name</th>
+            <th *ngIf="type=='restaurant' || type=='product'">owner id</th>
+            <th *ngIf="type=='restaurant' ||type== 'product'">Title</th>
+            <th *ngIf="type=='restaurant'">details</th>
+            <th *ngIf="type=='product'">content</th>
+            <th *ngIf="type== 'product'">price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of data">
+        <td>{{item._id}}</td>
+        <td *ngIf="type=='user' || type=='order'">{{item.userName}}</td>
+        <td *ngIf="type=='user'">{{item.email}}</td>
+        <td *ngIf="type=='user'">{{item.gender}}</td>
+        <td *ngIf="type=='user'">{{item.age}}</td>
+        <td *ngIf="type=='user'">{{item.userType}}</td>
+        <td *ngIf="type=='order'">{{item.productId}}</td> 
+        <td *ngIf="type=='restaurant' || type=='product'">{{item.ownerName}}</td>
+        <td *ngIf="type=='restaurant' ||type== 'product'">{{item.userId}}</td>
+        <td *ngIf="type=='restaurant' ||type== 'product'">{{item.title}}</td>
+        <td *ngIf="type=='restaurant'">{{item.details}}</td>
+        <td *ngIf="type=='product'">{{item.content}}</td>
+        <td *ngIf="type== 'product'">{{item.price}}</td>
+        <td >
+            <a class="btn red  text-faded  " style="margin:auto" (click)="handleDelete(type,item._id)">Delete</a>
+        </td>
+    </tbody>
+  </table>
+</div>

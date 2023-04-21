@@ -19,8 +19,8 @@ class User {
     static logInUser = async(req,res)=>{
         try{
             const user = await userModel.loginMe(req.body.email,req.body.password);
-            await user.generateToken()
-            helperFunc.resData(res,200,true,user,"success login")
+           const token = await user.generateToken()
+            helperFunc.resData(res,200,true,{user,token},"success login")
 
         }
         catch(e){
@@ -222,7 +222,7 @@ class User {
     }
     static allRestaurant = async(req,res)=>{
         try{
-            const restaurants = await restaurantModel.find()
+            const restaurants = await restaurantModel.find({})
             helperFunc.resData(res,200,true,restaurants,"success get restaurants")
 
         }

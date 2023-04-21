@@ -12,9 +12,9 @@ class Restaurant{
             const newName = req.file.path + "." + ext;
             fs.renameSync(req.file.path,newName)
         const restaurantData = await new restaurantModel({
-            userId:req.user._id,
-            ownerName:req.user.userName,
-            image:`${process.env.ServerLink}${folderName}/${req.file.filename}.${ext}`,
+            'userId':req.user._id,
+            'ownerName':req.user.userName,
+            'image':`${process.env.ServerLink}${folderName}/${req.file.filename}.${ext}`,
             ...req.body})
         await restaurantData.save();
         req.user.restaurant = restaurantData._id;
@@ -27,7 +27,7 @@ class Restaurant{
     }
     static showAll =async(req,res)=>{
         try{
-        const restaurants = await restaurantModel.find()
+        const restaurants = await restaurantModel.find({})
         resData(res, 200,true,restaurants,"success")
         }
         catch(e){

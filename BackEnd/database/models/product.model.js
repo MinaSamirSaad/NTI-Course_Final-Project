@@ -14,7 +14,6 @@ const productSchema =mongoose.Schema({
         required:true,
         trim:true,
         minLength: 3,
-        // maxLength: 20,
         lowercase:true,
 
     },

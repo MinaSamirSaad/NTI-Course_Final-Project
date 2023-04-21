@@ -1,6 +1,4 @@
-<div class="alert alert-danger" *ngIf="msgError">
-    {{msgError}}
-</div>
+
 <div class="container">
     <div class="container">
         <div class="card" style="width: 18rem;">
@@ -13,6 +11,9 @@
                     </label></a>
             </div>
     
+        </div>
+        <div class="alert alert-danger" *ngIf="msgError">
+            {{msgError}}
         </div>
 <div class="form-conteainer " >
 <form #loginform="ngForm" (ngSubmit)="handleSubmit(loginform)">

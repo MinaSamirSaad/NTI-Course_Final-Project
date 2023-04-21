@@ -1,9 +1,11 @@
 <div class="container"  >
-  <div class="alert alert-danger" *ngIf="orders.length==0">
+  <div *ngIf="orders.length==0">
+  <div class="alert alert-danger" >
     no orders found
   </div>
   <div class="center">
   <a class="btn" routerLink="/products" ><-- Order One Now</a>
+</div>
 </div>
     <div class="card mb-3" style="max-width: 100%; margin:2rem ;" *ngFor="let order of orders">
         <div class="row g-0">

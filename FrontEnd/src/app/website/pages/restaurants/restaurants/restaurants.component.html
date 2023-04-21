@@ -1,3 +1,9 @@
+<div class="alert alert-danger" *ngIf="message" >
+    {{message}}
+   </div>
+   <div class="alert alert-danger" *ngIf="restaurants.length==0" >
+    Sorry no Restaurants found
+   </div>
 <section class="popular" id="popular" >
     <div class="box-container" >
     <div *ngFor="let restaurant of restaurants">

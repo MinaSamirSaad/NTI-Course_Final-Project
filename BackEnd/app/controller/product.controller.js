@@ -11,9 +11,9 @@ class Product{
             const newName = req.file.path + "." + ext;
             fs.renameSync(req.file.path,newName)
         const productData = await new productModel({
-            userId:req.user._id,
-            ownerName:req.user.userName,
-            image:`${process.env.ServerLink}${folderName}/${req.file.filename}.${ext}`,
+            'userId':req.user._id,
+            'ownerName':req.user.userName,
+            'image':`${process.env.ServerLink}${folderName}/${req.file.filename}.${ext}`,
             ...req.body})
         await req.user.products.push(productData._id)
         await productData.save();

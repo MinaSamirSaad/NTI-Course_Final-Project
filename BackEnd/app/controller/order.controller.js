@@ -6,9 +6,10 @@ class Order{
         try{
             if(req.userType == "Visitor") throw new Error("you should register first")
         const orderData = await new orderModel({
-            userId:req.user._id,
-            userName:req.user.userName,
-            productId:req.params.id})
+            'userId':req.user._id,
+            'userName':req.user.userName,
+            'productId':req.params.id,
+            ...req.body})
             req.user.orders.push(orderData._id)
         await orderData.save();
         await req.user.save()

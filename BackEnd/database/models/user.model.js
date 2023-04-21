@@ -84,7 +84,7 @@ const userSchema = mongoose.Schema({
     ],
     image:{
         type:String,
-        default:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/1200px-Unknown_person.jpg'
+        default:'https://static.storyweaver.org.in/illustrations/48563/large/unknown-clip-art-4.jpg'
     },
     userType:{
         type:String,

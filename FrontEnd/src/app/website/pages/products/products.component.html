@@ -1,4 +1,10 @@
-<section class="popular" id="popular">
+<div class="alert alert-danger" *ngIf="message" >
+    {{message}}
+   </div>
+   <div class="alert alert-danger" *ngIf="allProducts.length==0" >
+    Sorry no products found
+   </div>
+<section class="popular" id="popular"  *ngIf="allProducts.length>0">
 
     <h1 class="heading">most <span>popular</span> foods</h1>
     <div class="box-container" >

@@ -12,7 +12,7 @@ import {  HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart/cart.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { RegisterComponent } from './website/pages/register/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateRestaurantComponent } from './website/pages/createRestaurant/create-restaurant/create-restaurant.component';
 import { AvatarComponent } from './components/avatar/avatar/avatar.component';
 import { SingleRestaurantComponent } from './website/pages/singleRestaurant/single-restaurant/single-restaurant.component';
@@ -20,11 +20,12 @@ import { ProductCartComponent } from './components/productCart/product-cart/prod
 import { RestaurantCartComponent } from './components/restaurantCart/restaurant-cart/restaurant-cart.component';
 import { MyOrdersComponent } from './website/pages/myOrders/my-orders/my-orders.component';
 import { MyProfileComponent } from './website/pages/myProfile/my-profile/my-profile.component';
-import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './website/pages/logIn/login/login.component';
 import { CreateProductComponent } from './website/pages/createProduct/create-product/create-product.component';
-
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginAdmenComponent } from './Dashboard/login-admen/login-admen.component';
+import { AdmenHomeComponent } from './Dashboard/admen-home/admen-home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,13 +45,16 @@ import { CreateProductComponent } from './website/pages/createProduct/create-pro
     MyProfileComponent,
     LoginComponent,
     CreateProductComponent,
+    ErrorPageComponent,
+    LoginAdmenComponent,
+    AdmenHomeComponent,
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule, // required animations module
-    ToastrModule.forRoot(),
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   providers: [{
